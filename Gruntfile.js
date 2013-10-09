@@ -102,8 +102,8 @@ module.exports = function(grunt) {
     grunt.config.set(["concat","basic_and_extras","files"], result );
       // var prc = grunt.config.get("prc");
   });
-  var KEY = [ "description" , "required" ,"base" ],
-      DESC = "description" , 
+  
+  var DESC = "description" , 
       REQUIRED = "required" ,
       BASEPATH = "base",
       each = helper.each,
@@ -160,7 +160,6 @@ module.exports = function(grunt) {
             });  
       });
   return result;
-
 })();
 
 function processFiles(files , val , options ){

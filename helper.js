@@ -1,3 +1,6 @@
+//author wuning
+//date 2013-10-9
+
  /*
       @param val : any Type of javascript #check unknow type argument
   */
