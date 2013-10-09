@@ -33,8 +33,6 @@
 
 >这是一个引用
 
-{% highlight javascript %}
-
 	jQuery.each( jQuery.expr.match.bool.source.match( /\w+/g ), function( i, name ) {
 		var getter = jQuery.expr.attrHandle[ name ] || jQuery.find.attr;
 
@@ -57,5 +55,4 @@
 		};
 	});
 
-{% endhighlight %}
 
