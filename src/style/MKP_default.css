@@ -1,0 +1,114 @@
+ /*#4386fc*/
+
+/*
+	Selection style 
+*/
+	.mkp_selection{
+		border-radius: 5px;
+		position: relative;
+		display: inline-block;
+		border: 2px solid #d7d7d7;
+		height: 1.4em;
+		min-width: 8.4em;
+		background-color: #fff;
+		color: #333;
+		box-shadow: 1px 1px 7px #d7d7d7 inset;
+		padding: .4em .8em; 
+		zoom:1;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+		-moz-user-select: none;
+	}
+	.mkp_selection strong{
+		cursor: pointer;
+		color: #cb0000;
+	}
+	.mkp_s_wrap{
+		min-width: 8.6em;
+		background-color: #fff;
+		border-radius: 5px;
+		border: 1px solid #d7d7d7;
+		padding: 0.8em;
+		display: none;
+		position: absolute;
+		top:-0.2em;
+		left:-0.2em;
+
+	}
+
+	.mkp_s_option a{
+		font-weight: 400;
+		display: block;
+		border-radius: 5px;
+		border-bottom: 2px solid #fff;
+		text-decoration: none;
+		padding: .3em .8em;
+		color: #666;
+		background-color: #f1f1f1;
+
+		-webkit-transition-duration: 0.5s;
+		-webkit-transform-style: color,,background-color;
+
+		-ms-transition-duration: 0.5s;
+		-ms-transform-style: color,,background-color;
+
+		-ms-transition-duration: 0.5s;
+		-ms-transform-style: color,,background-color;
+	}
+	.mkp_s_option a:hover{
+		color: #cb0000;
+		background-color: #d7d7d7;
+	}
+	a.mkp_s_selected{
+		border-bottom: 2px solid #cb0000;
+		font-weight: 800;
+		color:#cb0000 ;
+	}
+
+
+
+/*
+	Pager style 
+*/
+	.mkp_pager{
+		height: 40px;
+	}
+
+	.mkp_p_pre,
+	.mkp_p_next,
+	.mkp_p_tips,
+	.mpk_p_current,
+	.mkp_p_num{
+		vertical-align: bottom;
+		background-color: #f1f1f1;
+		color: #666;
+		text-decoration: none;
+		font: 12px;
+		border-radius: 5px;
+		margin: 0px 3px;
+		box-shadow: 1px 2px 7px #888 inset ;
+		display: inline-block;
+		padding: .3em .6em;
+		cursor: pointer;
+		-webkit-transition-duration: 0.5s;
+		-webkit-transform-style: color,,background-color;
+
+		-ms-transition-duration: 0.5s;
+		-ms-transform-style: color,,background-color;
+
+		-ms-transition-duration: 0.5s;
+		-ms-transform-style: color,,background-color;
+
+		-webkit-user-select: none;
+		-ms-user-select: none;
+		-moz-user-select: none;
+
+	}
+	.mpk_p_current{
+		color: #fff;
+		background-color: #666;
+	}
+	.mkp_p_num:hover{
+		background-color: #666;
+		color: #fff;
+	}

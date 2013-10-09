@@ -1,0 +1,44 @@
+{	
+ 	"lib":{
+	    "jQuery" : {
+	    	"static/js/test/jquery.js" : [ "src/jQuery.js" ]
+	    	},
+	 	"MKPtool":{
+	 		"description" : {
+	 			"base" : [ "dld_ysh","dld_bug" ] , 
+	 			"required" : [ "#jQuery#" ]
+	 			} ,
+	    	"static/js/MKPtool/_MKP.js":["src/intro.js","src/MKP_base.js","src/MKP.selection.js","src/MKP.pager.js","src/outro.js"]
+	    },
+	    "TestLib":{
+	 		"description" : {
+	 			"base" : [ "node" ] , 
+	 			"required" : [ "#jQuery#" ]
+	 			} ,
+	    	"/_MKP.js":["src/intro.js","src/MKP_base.js","src/MKP.pager.js","src/outro.js"]
+	    },
+	    "mDLD" : {
+	    	"description" : {
+	 			"base" : [ "dld_ysh","dld_bug" , "supermarket" ] 
+	 			} ,
+	    	"static/js/test/mDLD.js" : ["mDLD.js"]
+	    	}  
+	    },
+	"dld" : {
+		"Index" : { 
+			"description" : {
+			    "required" : ["#lib.mDLD#","#lib.MKPtool#" , "#lib.jQuery#"]
+			    },
+			    "static/js/test/Index.js":["src/index.js"]
+		    },
+		"meishi": ["#mDLD#","sea.js","jQuery.js","library.js","dialog.js","goble.js"]
+	 },
+	"supermarket" : {
+		"Index" : {
+			"description" :{
+				"required" : ["#lib.mDLD#","#lib.MKPtool#" , "#lib.jQuery#"]
+				},
+			"static/js/index.js" : ["src/index.js"]
+		}
+	}
+ }
