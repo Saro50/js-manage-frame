@@ -4,7 +4,7 @@
 - 日期: 2013-10-09
 
 
-##1.自动化流程
+##1.工具简介
 
 主要使用工具:[GruntJs][0]
 
@@ -26,33 +26,72 @@
 [4]:https://npmjs.org/package/grunt-contrib-cssmin "cssmin"
 
 
-##2.开发流程
+##2.目录结构
 
+主要的3个文件
 
-**中间的一个code**和其它的`*cookie*`其它的*例如强调*
+>Gruntfile.js
 
->这是一个引用
+执行文件，所有的功能在此文件中实现，与此相关的是`helper.js`，包含一些简单工具函数的模块
 
-	jQuery.each( jQuery.expr.match.bool.source.match( /\w+/g ), function( i, name ) {
-		var getter = jQuery.expr.attrHandle[ name ] || jQuery.find.attr;
+>branches.json
 
-		jQuery.expr.attrHandle[ name ] = function( elem, name, isXML ) {
-			var fn = jQuery.expr.attrHandle[ name ],
-				ret = isXML ?
-					undefined :
-					/* jshint eqeqeq: false */
-					// Temporarily disable this handler to check existence
-					(jQuery.expr.attrHandle[ name ] = undefined) !=
-						getter( elem, name, isXML ) ?
+分支路径说明文件，大致内容如下,属性为项目名称,对应值为绝对路径
 
-						name.toLowerCase() :
-						null;
+	{
+		"dld_ysh" : "D:/WN/svn/branch_ysh/",
+		"dld_bug" : "D:/WN/svn/branch_bug/",
+		"dld_turnk" : "D:/WN/svn/Turnk_dld/",
+		"supermarket" : "D:/WN/svn/branch_supermarket/",
+		"node" : "D:/WN/node/build"
+	 	}
 
-			// Restore handler
-			jQuery.expr.attrHandle[ name ] = fn;
+>taskJs.json
 
-			return ret;
-		};
-	});
+主要描述文件,用于描述前端所有的js文件以及其关系,数据格式如下，
+*注:为了方便描述，在下列代码中打了注释，但是`json`格式文件实际上并不允许有注释出现*
+
+	{	
+		//便于记忆和描述的主项目名
+ 		"dld" : {
+ 			//子功能名称，例如子页名字叫meishi
+			"meishi":{
+
+				//描述型属性，这是个关键字，同时其下子属性也是关键字
+
+				"description" : {
+
+					//此功能包含依赖的js文件，(这个属性尚未使用到，暂时可有可无)
+
+					"required" : ["#lib.mDLD#","#lib.MKPtool#" , "#lib.jQuery#"],
+
+				    //用到这些文件的基本分支
+
+				    "base" :["dld_ysh" , "dld_bug"]
+					},
+
+				//相对于每个基本分支的路径
+
+				"static/js/test/Index.js":["#mDLD#","sea.js","jQuery.js","library.js","dialog.js","goble.js"]
+			}， 	
+ 			//子功能名称
+			"testIndex" : {
+				 "description" : {
+		 			"base" : [ "node" ] , 
+		 			"required" : [ "#jQuery#" ]
+		 			} ,
+		    	"/_MKP.js":["src/intro.js","src/MKP_base.js","src/MKP.pager.js","src/outro.js"]
+		    	},
+		    //子功能名称
+			"Index" : { 
+				"description" : {
+				    "required" : ["#lib.mDLD#","#lib.MKPtool#" , "#lib.jQuery#"],
+				    "base" :["dld_ysh" , "dld_bug"]
+				    },
+				    "static/js/test/Index.js":["src/index.js"]
+			    }
+	
+		}
+	}
 
 

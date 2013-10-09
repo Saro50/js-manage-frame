@@ -102,7 +102,10 @@ module.exports = function(grunt) {
     grunt.config.set(["concat","basic_and_extras","files"], result );
       // var prc = grunt.config.get("prc");
   });
-  var KEY = [ "description" , "required" ],
+  var KEY = [ "description" , "required" ,"base" ],
+      DESC = "description" , 
+      REQUIRED = "required" ,
+      BASEPATH = "base",
       each = helper.each,
       type = helper.type,
       search = helper.search,
@@ -110,46 +113,55 @@ module.exports = function(grunt) {
       taskJs = grunt.config.get(["taskJs"]),
       branches = grunt.config.get(["branches"]);
 
-  var ProjectModel ={
-    get : function( name ){
-      return this[name];
-    },
-    Lib : (function(){
-    var lib = taskJs.lib,
-        _lib = {} ;
-        each( lib ,function( val , p ){
-                _lib[p] = {};
-                _lib[p].basePath = [];
-                _lib[p].relativePath = "",
-                _lib[p].path = [];
-                _lib[p].required = [];
-                each( val , function( val , i ){
-                    if( i !== "description" ){
-                      _lib[p].relativePath = i;
-                      _lib[p].required = val;
-                    }
-                });
-                if(type(val.description) === "Object"){
-                  try{
-                    each( val.description.project , function( val , i ){
-                      if( type( branches[val] ) === "Object" ){
-                        each( branches[val] , function( v , j ){
-                             _lib[p].path.push( v + _lib[p].relativePath );
-                             _lib[p].basePath.push( v );
-                        });
-                      }else{
-                        _lib[p].path.push( branches[val] + _lib[p].relativePath );
-                        _lib[p].basePath.push( branches[val] );
+  var ProjectModel = (function(){
+    var result = {
+          get : function(name){
+            return this[name];
+          }
+        };
+   each( taskJs , function( v , k ){
+          var taskFiles; 
+          if(!result[k]){
+            taskFiles = result[k] = {};
+          }else{
+            throw {
+                message: K + " Has been existed!"
+            };
+          }
+        each( v ,function( val , p ){
+                  taskFiles[p] = {};
+                  taskFiles[p].basePath = [];
+                  taskFiles[p].relativePath = "",
+                  taskFiles[p].path = [];
+                  taskFiles[p].required = [];
+                  each( val , function( val , i ){
+                      if( i !== DESC ){
+                        taskFiles[p].relativePath = i;
+                        taskFiles[p].required = val;
                       }
-                    });
-                  }catch(e){
+                  });
+                  if(type(val[DESC]) === "Object"){
+                    try{
+                      each( val[DESC][BASEPATH] , function( val , i ){
+                        if( type( branches[val] ) === "Object" ){
+                          each( branches[val] , function( v , j ){
+                               taskFiles[p].path.push( v + taskFiles[p].relativePath );
+                               taskFiles[p].basePath.push( v );
+                          });
+                        }else{
+                          taskFiles[p].path.push( branches[val] + taskFiles[p].relativePath );
+                          taskFiles[p].basePath.push( branches[val] );
+                        }
+                      });
+                    }catch(e){
 
+                    }
                   }
-                }
-          });
-        return _lib;
-  })()
-}
+            });  
+      });
+  return result;
+
+})();
 
 function processFiles(files , val , options ){
   var options = options || {};
@@ -198,8 +210,9 @@ function SubTask( val , options ){
 */
 
   grunt.registerTask("test" , 'test loging' , function( arg1 , data ){
-      processTask( "TestLib" , [ "Lib" , "TestLib"]);
-      console.log( grunt.config.get( ["jshint","TestLib" ] ) );
+      processTask( "testIndex" , [ "dld" , "testIndex"]);
+      console.log("here------------>");
+      console.log( grunt.config.get( ["jshint","testIndex" ] ) );
    // var MM = grunt.template.process('<%= baz %>', {data: obj})
     
   });
