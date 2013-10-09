@@ -118,9 +118,13 @@ h5 {
     box-shadow:0 5px 15px #000;     
 }
 </style><body><h1>前端开发流程以及文件组织</h1>
+<blockquote>
+<p>作者: WuNing</p>
+<p>日期: 2013-10-09</p>
+</blockquote>
 <h2>1.自动化流程</h2>
 <p>主要使用工具:<a href="http://gruntjs.com/" title="GruntJs">GruntJs</a></p>
-<p><em>一个任务运行框架，框架已经提供多种前端开发使用插件工具，例如使用的<a href="http://jslinterrors.com/" title="JSlint">JsLint</a>,<a href="https://github.com/gruntjs/grunt-contrib-concat" title="concat">concat</a>,<a href="https://github.com/gruntjs/grunt-contrib-uglify" title="uglify">uglify</a>,cssmin</em></p>
+<p><em>一个任务运行框架，框架已经提供多种前端开发使用插件工具，例如使用的<a href="http://jslinterrors.com/" title="JSlint">JsLint</a>,<a href="https://github.com/gruntjs/grunt-contrib-concat" title="concat">concat</a>,<a href="https://github.com/gruntjs/grunt-contrib-uglify" title="uglify">uglify</a>,<a href="https://npmjs.org/package/grunt-contrib-cssmin" title="cssmin">cssmin</a></em></p>
 <p>运行环境:<a href="http://nodejs.org/" title="NodeJs">node</a></p>
 <h3>基本流程</h3>
 <ul>
@@ -128,12 +132,11 @@ h5 {
 <li>相关文件合并</li>
 <li>压缩输出js</li>
 </ul>
+<h2>2.开发流程</h2>
 <p><strong>中间的一个code</strong>和其它的<code>*cookie*</code>其它的<em>例如强调</em></p>
 <blockquote>
-<p>这是一个引用
-这是另外一个</p>
+<p>这是一个引用</p>
 </blockquote>
-<p>&lt;则还是 &gt;</p>
 <pre><code>jQuery.each( jQuery.expr.match.bool.source.match( /\w+/g ), function( i, name ) {
     var getter = jQuery.expr.attrHandle[ name ] || jQuery.find.attr;
 

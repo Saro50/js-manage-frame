@@ -1,5 +1,9 @@
 #前端开发流程以及文件组织
 
+- 作者: WuNing
+- 日期: 2013-10-09
+
+
 ##1.自动化流程
 
 主要使用工具:[GruntJs][0]
@@ -29,6 +33,7 @@
 
 >这是一个引用
 
+{% highlight javascript %}
 
 	jQuery.each( jQuery.expr.match.bool.source.match( /\w+/g ), function( i, name ) {
 		var getter = jQuery.expr.attrHandle[ name ] || jQuery.find.attr;
@@ -52,5 +57,5 @@
 		};
 	});
 
-
+{% endhighlight %}
 
