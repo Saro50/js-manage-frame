@@ -37,7 +37,7 @@
 			    "required" : ["#lib.mDLD#","#lib.MKPtool#" , "#lib.jQuery#"],
 			    "base" :["dld_ysh" , "dld_bug"]
 			    },
-			    "static/js/test/Index.js":["src/index.js"]
+			    "static/js/test/Index.js":"#origin#"
 		    },
 		"meishi":{
 			"description" : {
@@ -45,8 +45,14 @@
 			    "base" :["dld_ysh" , "dld_bug"]
 				},
 			"static/js/test/Index.js":["#mDLD#","sea.js","jQuery.js","library.js","dialog.js","goble.js"]
-		} 
-			
+		}, 
+		"ysh_index_index" : {
+			"description":{
+				"required" : ["#lib.mDLD#","#lib.MKPtool#" , "#lib.jQuery#"],
+			    "base" :["dld_ysh" , "dld_bug"]
+				},
+			"static/js/ysh/Index.js" : "#origin#"
+		}	
 	 },
 	"supermarket" : {
 		"Index" : {

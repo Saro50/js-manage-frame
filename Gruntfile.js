@@ -106,6 +106,7 @@ module.exports = function(grunt) {
   var DESC = "description" , 
       REQUIRED = "required" ,
       BASEPATH = "base",
+      ORGIN = /#origin#/,
       each = helper.each,
       type = helper.type,
       search = helper.search,
@@ -125,7 +126,7 @@ module.exports = function(grunt) {
             taskFiles = result[k] = {};
           }else{
             throw {
-                message: K + " Has been existed!"
+                message: K + " existed!"
             };
           }
         each( v ,function( val , p ){
@@ -145,8 +146,8 @@ module.exports = function(grunt) {
                       each( val[DESC][BASEPATH] , function( val , i ){
                         if( type( branches[val] ) === "Object" ){
                           each( branches[val] , function( v , j ){
-                               taskFiles[p].path.push( v + taskFiles[p].relativePath );
-                               taskFiles[p].basePath.push( v );
+                            taskFiles[p].path.push( v + taskFiles[p].relativePath );
+                            taskFiles[p].basePath.push( v );
                           });
                         }else{
                           taskFiles[p].path.push( branches[val] + taskFiles[p].relativePath );
@@ -209,9 +210,8 @@ function SubTask( val , options ){
 */
 
   grunt.registerTask("test" , 'test loging' , function( arg1 , data ){
-      processTask( "testIndex" , [ "dld" , "testIndex"]);
+      processTask( "testIndex" , [ "dld" , "Index"]);
       console.log("here------------>");
-      console.log( grunt.config.get( ["jshint","testIndex" ] ) );
    // var MM = grunt.template.process('<%= baz %>', {data: obj})
     
   });
@@ -221,6 +221,6 @@ function SubTask( val , options ){
 
   //grunt.registerTask("default",['jshint', 'qunit', 'clean', 'concat', 'uglify']);
   //grunt.registerTask("default",[ "test" , "jshint" , "concat" , "uglify" ]);
-  grunt.registerTask("default",[ "test" ,"jshint" ]);
+  grunt.registerTask("default",[ "test"  ]);
 };
 
