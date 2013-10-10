@@ -79,7 +79,7 @@
 		//便于记忆和描述的主项目名
  		"dld" : {
  			//子功能名称，例如子页名字叫meishi
-			"meishi":{
+			"ysh_index_index":{
 
 				//描述型属性，这是个关键字，同时其下子属性也是关键字
 
@@ -95,8 +95,8 @@
 					},
 
 				//相对于每个基本分支的路径
-
-				"static/js/test/Index.js":["#mDLD#","sea.js","jQuery.js","library.js","dialog.js","goble.js"]
+				//origin表示源文件路径与结果路径相同
+				"static/js/ysh/Index.js" : "#origin#"
 			}， 	
  			//子功能名称
 			"testIndex" : {
@@ -112,7 +112,7 @@
 				    "required" : ["#lib.mDLD#","#lib.MKPtool#" , "#lib.jQuery#"],
 				    "base" :["dld_ysh" , "dld_bug"]
 				    },
-				    "static/js/test/Index.js":["src/index.js"]
+				    "static/js/test/Index.js":"#origin#"
 			    }
 	
 		}
